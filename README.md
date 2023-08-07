@@ -48,11 +48,17 @@ PCM8A.X (原作:philly氏) は TcbnErik氏によるパッチ版の使用を推�
 
 1. 任意の動画データから、各フレーム画像を 256x256 または 384x256 のサイズで連番BMPとして保存する。
 
+ffmpeg などで作ることができます。
+
 2. 連番のBMPデータをX680x0 GVRAM形式に変換した上で連結して一つのファイルとする。
+
+横384の画像の場合、右側にパディングして横512にする必要があります。
+
+拙作の [bmp2raw](https://github.com/tantanGH/bmp2raw) を使うと自動的に作ることができます。
 
 3. 音声データを抜き出し、X68k ADPCM形式として保存する。
 
-
+こちらも ffmpeg で 15625Hz のPCMデータを出力し、拙作の [pcm2adpcm](https://github.com/tantanGH/pcm2adpcm) などを使うことができます。
 
 ---
 
