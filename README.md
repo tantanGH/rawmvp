@@ -25,7 +25,7 @@ ADPCM音声データはメインメモリに丸ごと読み込むため、その
 
 実際の再生例
 
-[https://youtu.be/u_Py9P0lbjs](https://youtu.be/u_Py9P0lbjs)
+[<img src='images/rawmvp1.png'/>](https://youtu.be/u_Py9P0lbjs)
 
 ---
 
