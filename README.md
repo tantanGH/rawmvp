@@ -1,6 +1,6 @@
 # RAWMVP.X
 
-Raw Movie File Player for X68000Z/X680x0
+Raw Movie File Player for X68000Z/X680x0 (試行版)
 
 ---
 
