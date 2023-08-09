@@ -54,6 +54,10 @@ PCM8A.X (原作:philly氏) は TcbnErik氏によるパッチ版の使用を推�
 
 ffmpeg などで作ることができます。
 
+例：
+
+    ffmpeg -ss 00:00:00.000 -to 01:31:00.000 -i hogehoge.mp4 -ss 00:00:00.000 -t 00:01:29.500 -filter_complex "[0:v] fps=27.729,scale=256:200" -vcodec bmp "output_bmp/output_%05d.bmp"
+
 2. 連番のBMPデータをX680x0 GVRAM形式に変換した上で連結して一つのファイルとする。
 
 横256の画像の場合、2フレームを左右に繋げて512x256の画像にする必要があります。
@@ -61,9 +65,15 @@ ffmpeg などで作ることができます。
 
 拙作の [bmp2raw](https://github.com/tantanGH/bmp2raw) を使うと自動的に作ることができます。
 
+    bmp2raw 256 output_bmp hogehoge.raw
+
 3. 音声データを抜き出し、X68k ADPCM形式として保存する。
 
 こちらも ffmpeg で 15625Hz のPCMデータを出力し、拙作の [pcm2adpcm](https://github.com/tantanGH/pcm2adpcm) などを使うことができます。
+
+    ffmpeg -ss 00:00:00.000 -to 01:31:00.000 -i hogehoge.mp4-f s16be -acodec pcm_s16be -filter:a "volume=0.8" -ar 15625 -ac 1  -ss 00:00:00.000 -t 00:01:29.500 hogehoge.m16
+
+    pcm2adpcm hogehoge.m16 15625 1 hogehoge.pcm 15625
 
 ---
 
