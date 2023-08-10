@@ -81,7 +81,7 @@ ffmpegを使った出力例：
 
 4. 48kHz PCMデータを 15.625kHz ADPCM形式に変換する。
 
-Human68k上で NOZさんの [PCM3PCM](http://noz.ub32.org/68fsw.html)を使うのが手軽です。
+Human68k上で NOZさんの [PCM3PCM.X](http://noz.ub32.org/68fsw.html) を使うのが手軽です。
 
     pcm3pcm hogehoge.s48 hogehoge.pcm
 
