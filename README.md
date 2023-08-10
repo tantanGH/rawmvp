@@ -77,7 +77,8 @@ ffmpegを使った出力例：
 横256の画像の場合、2フレームを左右に繋げて512x256の画像にする必要があります。
 横384の画像の場合、右側にパディングして横512にする必要があります。
 
-拙作の [BMP2RAW.X](https://github.com/tantanGH/bmp2raw-x68k) や [bmp2raw](https://github.com/tantanGH/bmp2raw) を使うと自動的に作ることができます。BMP2RAW.X は Human68kで動作します。bmp2raw はPythonが使える環境で動作します。
+Human68k上で拙作の [BMP2RAW.X](https://github.com/tantanGH/bmp2raw-x68k) を使うと自動的に作ることができます。
+出力ファイルサイズが大きくなるので、最終的なコピー先となるHDSドライブに対していきなり書き出してしまうのがお勧めです。
 
 4. 48kHz PCMデータを 15.625kHz ADPCM形式に変換する。
 
