@@ -50,30 +50,41 @@ PCM8A.X (原作:philly氏) は TcbnErik氏によるパッチ版の使用を推�
 
 データは以下の流れで作成します。画像データのファイル(\*.raw)と、音声データのファイル(\*.pcm)は別のままで、2つのファイルとなります。
 
-1. 任意の動画データから、各フレーム画像を 256x256, 384x256 または 512x256 のサイズで連番BMPとして保存する。
+1. 任意の動画データから、各フレーム画像を連番BMPとして保存する。
 
-ffmpeg などで作ることができます。
+BMPは縦幅256以下、横幅256,384,512のいずれか、24bitカラーであることが必要です。
 
-例：
+[ffmpeg](https://www.ffmpeg.org/) などで作ることができます。この際にfpsを最終的に出力する厳密なfpsに合わせておく必要があります。
 
-    ffmpeg -ss 00:00:00.000 -to 01:31:00.000 -i hogehoge.mp4 -ss 00:00:00.000 -t 00:01:29.500 -filter_complex "[0:v] fps=27.729,scale=256:200" -vcodec bmp "output_bmp/output_%05d.bmp"
+|-|横256/512|横384|
+-|-|-
+|30|27.729|28.136|
+|20|18.486|18.757|
+|15|13.865|14.068|
 
-2. 連番のBMPデータをX680x0 GVRAM形式に変換した上で連結して一つのファイルとする。
+ffmpegを使った出力例：
+
+    ffmpeg -i hogehoge.mp4 -filter_complex "[0:v] fps=27.729,scale=256:200" -vcodec bmp "output_bmp/output_%05d.bmp"
+
+2. 音声データを48kHz 16bitステレオPCM(big endian)形式(.s48)で抜き出しておく。
+
+こちらも ffmpeg で可能です。ボリュームの調整もできます。
+
+    ffmpeg -i hogehoge.mp4　-f s16be -acodec pcm_s16be -filter:a "volume=0.8" -ar 48000 -ac 2 hogehoge.s48
+
+3. 連番のBMPデータをX680x0 GVRAM形式に変換した上で連結して一つのファイルとする。
 
 横256の画像の場合、2フレームを左右に繋げて512x256の画像にする必要があります。
 横384の画像の場合、右側にパディングして横512にする必要があります。
 
-拙作の [bmp2raw](https://github.com/tantanGH/bmp2raw) を使うと自動的に作ることができます。
+拙作の [BMP2RAW.X](https://github.com/tantanGH/bmp2raw-x68k) や [bmp2raw](https://github.com/tantanGH/bmp2raw) を使うと自動的に作ることができます。BMP2RAW.X は Human68kで動作します。bmp2raw はPythonが使える環境で動作します。
 
-    bmp2raw 256 output_bmp hogehoge.raw
+4. 48kHz PCMデータを 15.625kHz ADPCM形式に変換する。
 
-3. 音声データを抜き出し、X68k ADPCM形式として保存する。
+Human68k上で NOZさんの [PCM3PCM](http://noz.ub32.org/68fsw.html)を使うのが手軽です。
 
-こちらも ffmpeg で 15625Hz のPCMデータを出力し、拙作の [pcm2adpcm](https://github.com/tantanGH/pcm2adpcm) などを使うことができます。
+    pcm3pcm hogehoge.s48 hogehoge.pcm
 
-    ffmpeg -ss 00:00:00.000 -to 01:31:00.000 -i hogehoge.mp4-f s16be -acodec pcm_s16be -filter:a "volume=0.8" -ar 15625 -ac 1  -ss 00:00:00.000 -t 00:01:29.500 hogehoge.m16
-
-    pcm2adpcm hogehoge.m16 15625 1 hogehoge.pcm 15625
 
 ---
 
