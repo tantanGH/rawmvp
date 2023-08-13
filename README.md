@@ -38,11 +38,13 @@ CRTMOD16.X (M.Kamada氏) は XEiJ のインストールパッケージの中の 
 
 * [https://stdkmd.net/xeij/miscfiles.htm](https://stdkmd.net/xeij/miscfiles.htm)    
 
-`crtmod16 -e` でIOCS _CRTMOD拡張モードで常駐させてください。
+`crtmod16 -e` でIOCS _CRTMOD拡張モードで常駐させてください。横384モードを使わない場合は不要です。
 
 PCM8A.X (原作:philly氏) は TcbnErik氏によるパッチ版の使用を推奨します。
 
 * [https://github.com/kg68k/pcm8a](https://github.com/kg68k/pcm8a)
+
+無音モードで使う場合は常駐不要です。
 
 ---
 
