@@ -127,10 +127,10 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
 
 ## 再生方法
 
-    RAWMVP.X - Raw movie player version 0.4.0 by tantan
+    RAWMVP.X - Raw movie player version 0.x.x by tantan
     usage: rawmvp [options] <screen-width> <view-height> <fps> <raw-movie-file> <pcm-file>
-      screen-width ... 256, 384, 512, 512t, 768t
-      view-height ... 1 - 256 (graphic), 1 - 512 (text)
+      screen-width ... 256, 384, 512
+      view-height ... 1 - 256
               fps ... 30, 24, 20, 15, 12, 10, 6, 5, 4, 3, 2
           raw-file ... raw movie file (.raw)
           pcm-file ... pcm file (.pcm|.s22|.s24|.s32|.s44|.s48)
@@ -146,7 +146,8 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
     options:
           -l[n] ... repeat n times (0:endless, 1:default)
           -f ... do not skip frames
-          -x ... load 16bitPCM data to high memory directly
+          -m ... do not load image data to GVRAM directly
+          -x ... do not load 16bit PCM data to high memory directly
           -h ... show help message
 
 再生方法は2通りあり、
