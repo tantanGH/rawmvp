@@ -31,7 +31,7 @@ ADPCM音声データはメインメモリに丸ごと読み込むため、その
 
 開発にはXEiJを使用しています。XEiJで利用する場合はデータをHFS上に置いた上で `-m` オプションを付けて再生してください。
 
-実際の再生例
+実際の再生例(X68000Z EAK)
 
 [<img src='images/rawmvp1.png'/>](https://youtu.be/u_Py9P0lbjs)
 
