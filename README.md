@@ -13,7 +13,7 @@ Raw Movie File Player for X68000Z/X680x0 (試行版)
  - 256x256x65536色, 384x256x65536色, 512x256x65536色の3種類の画面モードに対応
  - ADPCMによる音声の同期再生対応(要PCM8A.X)
  - 16bitステレオPCMの内部同期再生対応(要Mercury-UNIT + PCM8PP.X)
- - 16bitステレオPCMの外部同期再生対応(要Raspberry Pi + S44RASP.X)
+ - 16bitステレオPCMの外部同期再生対応(要Raspberry Pi + s44raspd)
 
 ADPCM音声データはメインメモリに丸ごと読み込むため、その分のメインメモリは必要です。
 16bitPCMデータはハイメモリに読み込むため、ハイメモリ環境が必要です。(X68000Zでは対応していません)
