@@ -81,7 +81,7 @@ CRTMOD16.X は XEiJ のインストールパッケージの中の misc ディレ
 RAWMVPで再生するデータはご自身で用意して頂く必要があります。
 以下のツールを導入しておくことをお勧めします。
 
-* [BMP2RAW.X](https://github.com/tantanGH/bmp2raw)
+* [BMP2RAW.X](https://github.com/tantanGH/bmp2raw-x68k)
 * [LARGECP.X](https://github.com/tantanGH/largecp)
 * [PCM3PCM.X](http://noz.ub32.org/68fsw.html)
 
