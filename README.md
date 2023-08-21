@@ -37,27 +37,53 @@ ADPCM音声データはメインメモリに丸ごと読み込むため、その
 
 ---
 
-## インストール
+## RAWMVPのインストール
 
 RAWMPxxx.ZIP をダウンロードして、RAWMVP.X をパスの通ったディレクトリにコピーします。
 
-CRTMOD16.X および PCM8A.X を事前に常駐させておく必要があります。
+---
 
-CRTMOD16.X (M.Kamada氏) は XEiJ のインストールパッケージの中の misc ディレクトリに含まれています。
+## PCM8Aのインストール
 
-* [https://stdkmd.net/xeij/miscfiles.htm](https://stdkmd.net/xeij/miscfiles.htm)    
+ADPCM音声付きでの再生には PCM8A.X (原作:philly氏) が必要になります。
 
-`crtmod16 -e` でIOCS _CRTMOD拡張モードで常駐させてください。横384モードを使わない場合は不要です。
-
-PCM8A.X (原作:philly氏) は TcbnErik氏によるパッチ版の使用を推奨します。
+TcbnErik氏によるパッチ版の使用を推奨します。
 
 * [https://github.com/kg68k/pcm8a](https://github.com/kg68k/pcm8a)
 
-無音モードで使う場合は常駐不要です。
 
-常駐する際には以下のパラメータをつけることを推奨します。
+常駐の際の推奨コマンドライン:
 
     pcm8a -v0 -s1 off
+
+無音モードで使う場合は不要です。
+
+---
+
+## CRTMOD16のインストール
+
+横384の正方形ドットモードを使う場合は、CRTMOD16.X (M.Kamada氏) が必要になります。
+
+CRTMOD16.X は XEiJ のインストールパッケージの中の misc ディレクトリに含まれています。
+
+* [https://stdkmd.net/xeij/miscfiles.htm](https://stdkmd.net/xeij/miscfiles.htm)    
+
+常駐の際の推奨コマンドライン:
+
+    crtmod16 -e
+
+上記の通りIOCS _CRTMOD拡張モードで常駐させてください。横384モードを使わない場合は不要です。
+
+---
+
+## データ作成のためのツールのインストール
+
+RAWMVPで再生するデータはご自身で用意して頂く必要があります。
+以下のツールを導入しておくことをお勧めします。
+
+* [BMP2RAW.X](https://github.com/tantanGH/bmp2raw)
+* [LARGECP.X](https://github.com/tantanGH/largecp)
+* [PCM3PCM.X](http://noz.ub32.org/68fsw.html)
 
 ---
 
@@ -65,11 +91,12 @@ PCM8A.X (原作:philly氏) は TcbnErik氏によるパッチ版の使用を推�
 
 データは以下の流れで作成します。画像データのファイル(\*.raw)と、音声データのファイル(\*.pcm)の2つを用意する必要があります。
 
-1. 任意の動画データから、各フレーム画像を連番BMPとして保存する。
+1. Windows/macOSなどを使い、任意の動画データから各フレーム画像を連番BMPとして保存する。
 
 BMPは縦幅256以下、横幅256,384,512のいずれか、24bitカラーであることが必要です。
 
-[ffmpeg](https://www.ffmpeg.org/) などで作ることができます。この際にfpsを最終的に出力する厳密なfpsに合わせておく必要があります。
+連番BMPは [ffmpeg](https://www.ffmpeg.org/) などで作ることができます。ffmpegは出力fpsを自由に決めることが可能です。
+
 後述する BMP2RAW.X でもfps変換は可能です。その場合でも連番BMPが何fpsで出力されたものであるかは知っておく必要があります。
 
 |指定FPS|出力FPS 横256/512|出力FPS 横384|
