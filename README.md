@@ -200,7 +200,7 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
           -l[n] ... repeat n times (0:endless, 1:default)
           -f ... do not skip frames
           -m ... do not load image data to GVRAM directly
-          -x ... do not load 16bit PCM data to high memory directly
+          -x ... load 16bit PCM data to high memory directly
           -h ... show help message
 
 再生方法は2通りあり、
@@ -252,7 +252,7 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
 
 ## 変更履歴
 
-* 0.5.8 (2023/08/22) ... XM6g + Windrv + PCM8PP で16bitPCM音声が鳴らない問題の対策、およびXEiJを自動認識してメモリ転送を自動有効にするようにした
+* 0.5.8 (2023/08/22) ... XM6g + Windrv + PCM8PP で16bitPCM音声が鳴らない問題の対策、およびXEiJを自動認識してメモリ転送を自動有効にするようにした。-xの挙動を元に戻した。
 * 0.5.7 (2023/08/20) ... XEiJでHFSから再生するとADPCMが途切れてしまうのを防ぐ-mオプション追加
 * 0.5.6 (2023/08/20) ... ハイメモリへの16bitPCMデータのダイレクトロードをデフォルトにした(-xオプションでメインメモリ経由ロード)。16bitPCM音声データの周波数がpcm8pp再生周波数より高いと正常に再生できていなかったのを修正。
 * 0.5.5 (2023/08/17) ... 0.5.3でADPCMの途切れが目立っていたデグレを修正。テキストVRAMモード削除
