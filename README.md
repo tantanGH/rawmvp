@@ -108,14 +108,14 @@ XM6g + HDSの再生は推奨しません。
 
 |機種|サイズ・FPS|音声|結果|
 -|-|-|-
-|X68000Z EAK 1.3.1|256x200 30fps|PCM8A.X(ADPCM)|ほぼ問題ないが、わずかに音声が途切れることがある。|
-|X68000Z EAK 1.3.1|384x200 24fps|PCM8A.X(ADPCM)|ほぼ問題ないが、わずかに音声が途切れることがある。|
-|X68030実機 + 060turbo + ハイメモリRAMDISK|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
-|X68030実機 + 060turbo + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S32)|問題なし|
-|X68030実機 + 060turbo + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S48)|音声にノイズが乗る|
+|X68000Z EAK 1.3.1 10MHz|256x200 30fps|PCM8A.X(ADPCM)|ほぼ問題ないが、わずかに音声が途切れることがある。|
+|X68000Z EAK 1.3.1 10MHz|384x200 24fps|PCM8A.X(ADPCM)|ほぼ問題ないが、わずかに音声が途切れることがある。|
+|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
+|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S32)|問題なし|
+|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S48)|音声にノイズが乗る|
 |XEiJ 0.23.08.23 テスト版 + HFS + XVI 10MHzモード|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
-|XM6g 3.36 + WindrvXM + X68030 25MHzモード|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
-|XM6g 3.36 + WindrvXM + X68030 100MHzモード|256x200 30fps|PCM8PP.X(S48)|条件付きで可能(*1)|
+|XM6g 3.36 + WindrvXM + XVI 10MHzモード|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
+|XM6g 3.36 + WindrvXM + X68030 100MHzモード|256x200 30fps|PCM8PP.X(S48)|条件付きで可(*1)|
 
 (*1) ... PCM8PP.Xは上位の割り込みとの兼ね合いで再生を自動停止する場合がある。WindrvXMドライブからGVRAMへのデータロードを行なった場合もこの条件に該当するため再生がすぐに停止してしまう。このため、RAWMVP.XはXM6g+PCM8PP.Xの組み合わせで再生しようとした時は自動的にメインメモリを経由してGVRAMにデータを読み込みます。16bitPCM音声は正しく再生されますが、オーバーヘッドが発生するため30fpsでの再生を行うにはMPUを68030-100MHz程度に設定する必要があります。
 
