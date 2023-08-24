@@ -99,12 +99,12 @@ XEiJ + HDSの再生は推奨しません。
 |X68000Z EAK 1.3.1 10MHz|256x200 30fps|PCM8A.X(ADPCM)|ほぼ問題ないが、わずかに音声が途切れることがある。|
 |X68000Z EAK 1.3.1 10MHz|384x200 24fps|PCM8A.X(ADPCM)|ほぼ問題ないが、わずかに音声が途切れることがある。|
 |X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
-|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S32)|問題なし|
-|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S48)|音声にノイズが乗る|
+|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK + MercuryV3|256x200 30fps|PCM8PP.X(S32)|問題なし|
+|X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK + MercuryV3|256x200 30fps|PCM8PP.X(S48)|音声にノイズが乗る|
 |X68000XVI実機 16.7MHz + Nereid バンクメモリRAMDISK(16MB)|256x192 15fps|PCM8A.X(ADPCM)|問題なし|
 |XEiJ 0.23.08.23 テスト版 + HFS + XVI 10MHzモード|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
-|XM6g 3.36 + WindrvXM + X68030 25MHz|256x200 30fps|PCM8PP.X(S48)|問題なし|
-|XM6g 3.36 + WindrvXM + X68030 25MHz|384x192 24fps|PCM8PP.X(S48)|問題なし|
+|XM6g 3.36 + WindrvXM + X68030 25MHz + MercuryV3|256x200 30fps|PCM8PP.X(S48)|問題なし|
+|XM6g 3.36 + WindrvXM + X68030 25MHz + MercuryV3|384x192 24fps|PCM8PP.X(S48)|問題なし|
 
 
 ---
