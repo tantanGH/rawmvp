@@ -101,8 +101,11 @@ XEiJ + HDSの再生は推奨しません。
 |X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
 |X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S32)|問題なし|
 |X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK|256x200 30fps|PCM8PP.X(S48)|音声にノイズが乗る|
-|XEiJ 0.23.08.23 テスト版 + HFS + XVI 10MHzモード|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
 |X68000XVI実機 16.7MHz + Nereid バンクメモリRAMDISK(16MB)|256x192 15fps|PCM8A.X(ADPCM)|問題なし|
+|XEiJ 0.23.08.23 テスト版 + HFS + XVI 10MHzモード|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
+|XM6g 3.36 + WindrvXM + X68030 25MHz|256x200 30fps|PCM8PP.X(S48)|問題なし|
+|XM6g 3.36 + WindrvXM + X68030 25MHz|384x192 24fps|PCM8PP.X(S48)|問題なし|
+
 
 ---
 
