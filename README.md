@@ -107,11 +107,11 @@ XEiJ + HDSの再生は推奨しません。
 |X68030実機 + 060turbo 50MHz + ハイメモリRAMDISK + MercuryV3|256x200 30fps|PCM8PP.X(S48)|音声にノイズが乗る|
 |X68000XVI実機 16MHz + Nereid バンクメモリRAMDISK(16MB)|256x192 15fps|PCM8A.X(ADPCM)|問題なし|
 |XEiJ 0.23.08.25 テスト版 + HFS + XVI 16MHz|256x200 30fps|PCM8A.X(ADPCM)|問題なし|
-|XEiJ 0.23.08.25 テスト版 + HFS + XVI 16MHz|384x200 24fps|PCM8A.X(ADPCM 31kHz)|問題なし|
+|XEiJ 0.23.08.25 テスト版 + HFS + XVI 16MHz|384x200 24fps|PCM8A.X(ADPCM 31kHz)|要改造メニュー内ADPCM原発発振周波数変更|
 |XEiJ 0.23.08.25 テスト版 + HFS + X68030 25HMz|384x200 24fps|PCM8A.X(ADPCM 31kHz)|030/060はウェイトサイクルOFFを推奨|
 |XM6g 3.36 + WindrvXM + X68030 25MHz + MercuryV3|256x200 30fps|PCM8PP.X(S48)|問題なし|
 |XM6g 3.36 + WindrvXM + X68030 25MHz + MercuryV3|384x192 24fps|PCM8PP.X(S48)|問題なし|
-
+|XM6g 3.36 + WindrvXM + X68030 25MHz + MercuryV3|384x192 24fps|PCM8A.X(ADPCM 31kHz)|要改造メニュー内ADPCMクロックアップ有効|
 
 ---
 
