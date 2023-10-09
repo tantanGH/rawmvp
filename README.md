@@ -14,7 +14,6 @@ Raw Movie File Player for X68000Z/X680x0
  - ADPCMによる音声の同期再生対応(要PCM8A.X)
  - ADPCMクロックアップに対応(要オシレータ交換 + PCM8A.X)
  - 16bitステレオPCMの内部同期再生対応(要Mercury-UNIT + PCM8PP.X)
- - 16bitステレオPCMの外部同期再生対応(要Raspberry Pi + s44raspd)
  - ZMDによるOPM曲の同期再生対応(要ZMUSIC.X)
 
 推奨環境：X68000Z 1.3.1以降 + USBメモリの擬似SCSI または エミュレータ + ホストファイルシステム
@@ -46,11 +45,17 @@ X68000Zで常駐の際の推奨コマンドライン:
 
 無音モードで使う場合は不要です。
 
+---
+
+## ADPCMクロックアップ
+
+X68000Zでは使えませんが、改造された実機や一部のエミュレータではADPCMクロックアップを行って音質向上を行うことができます。
+
 拡張子.p21/.p31のADPCMクロックアップ(20.8kHz/31.2kHz)データを使う場合は4MHzオシレータを16MHzオシレータに交換した上で、
 
     pcm8a -m1
 
-としてクロックアップ対応モードで常駐させる必要があります。
+としてクロックアップ対応モードで PCM8A.X を常駐してください。
 
 ---
 
@@ -84,14 +89,9 @@ CRTMOD16.X は XEiJ のインストールパッケージの中の misc ディレ
 
 ## XEiJ + HFS での注意点
 
-XEiJはこれを書いている時点での最新リリースバージョン(0.23.08.08)までの場合、ADPCM再生中にHFSからGVRAMにデータ読み込みを行うとADPCM音声が乱れます。
+XEiJはHFSにデータを置いた上で、リリースバージョン(0.23.10.08)以上を必ず使ってください。それより前のバージョンでは、ADPCM再生中にHFSからGVRAMにデータ読み込みを行うとADPCM音声が乱れます。
 
-最新のテストバージョンを利用することでこれを回避でき、GVRAMダイレクトロードによる低負荷での高フレームレート再生が可能です。
-
-XEiJ 0.23.08.25 TEST
-* [https://stdkmd.net/xeijtest/](https://stdkmd.net/xeijtest/)
-
-なお、68030/68060の場合はウェイトサイクルOFF推奨です。また、XEiJ + HDSの再生は推奨しません。
+なお、68030/68060の場合はウェイトサイクルOFF推奨です。
 
 ---
 
@@ -213,7 +213,7 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
 
     RAWMVP.X - Raw movie player version 0.x.x by tantan
     usage: rawmvp [options] <screen-width> <view-height> <fps> <movie-file> <audio-file>
-      screen-width ... 256, 384, 512, 512t
+      screen-width ... 256, 384, 512
       view-height ... 1 - 256
               fps ... 30, 24, 20, 15, 12, 10, 6, 5, 4, 3, 2
           movie-file ... raw movie file (.raw)
@@ -230,8 +230,6 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
     options:
           -l[n] ... repeat n times (0:endless, 1:default)
           -f ... do not skip frames
-          -m ... do not load image data to GVRAM directly
-          -x ... load 16bit PCM data to high memory directly
           -h ... show help message
 
 再生方法は2通りあり、
@@ -246,8 +244,6 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
 * screen-width
 
 256, 384 または 512 を指定します。元データの各フレームの横幅と一致している必要があります。
-
-512t を指定するとTVRAMモードになります。
 
 * view-height
 
@@ -277,16 +273,11 @@ PCMデータファイル名を '-' (ハイフン) とすると音声なしでの
 
 拡張子.zmdの場合はZMUSICによるOPM曲とみなします。ただし高フレームレートの場合はADPCMよりも音が途切れがちになります。.zmsには対応していません。
 
-`-m` オプションをつけるとディスクからGVRAMへのダイレクトロードを行う代わりに、メインメモリ(ハイメモリがあればハイメモリ)を経由します。
-
-`-x` オプションをつけると、16bitPCMデータをハイメモリに直接高速ロードします(メインメモリを経由しない)。TS16FILE.Xなどのドライバが必要になる場合があります。
-
-ファイル名の先頭を `RASP:` から始めた場合、[s44raspd](https://github.com/tantanGH/s44rasp-x68k)と組み合わせることでまーきゅりーゆにっと相当の16bitステレオPCM外部同期再生を行うことができます。この機能は X68000Z EAK 1.3.1 でも利用可能です。
-
 ---
 
 ## 変更履歴
 
+* 0.7.5 (2023/10/09) ... TVRAMモード無効化(何やねん)。ZMUSIC停止時はフェードアウトとした。クレジット表記対応した。
 * 0.7.0 (2023/09/22) ... ZMDファイルに対応した。TVRAMモードを復活した。
 * 0.6.1 (2023/08/26) ... ADPCMクロックアップに対応した。ドキュメント見直し。
 * 0.6.0 (2023/08/24) ... MCSEL.Xからの呼び出しに対応した。メモリ経由転送モード時(PCM8PP+XM6g)のコードをアセンブラで書き直して高速化した。
